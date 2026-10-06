@@ -1,0 +1,16 @@
+---
+description: Use the Sporfie MCP tools safely (events, highlight clips, webhooks): close vs delete, millisecond timestamps, key format, search before create, no tokens, confirm destructive calls.
+globs:
+alwaysApply: false
+---
+
+# Sporfie MCP
+
+- `close_event` ends a running event now and keeps it; `delete_event` and `delete_moment` are permanent. Prefer closing, and do not repeat a close: it moves the end time again.
+- Confirm with the user before any destructive call: `update_event`, `close_event`, `delete_event`, `update_moment`, `delete_moment`, `watch_event`, `unwatch_event`. `watch_event` also sends event data to a URL, so check the URL.
+- Timestamps are epoch milliseconds (UTC), not seconds.
+- Event keys, moment keys and external IDs are letters, digits, `-` and `_` only. Pass them exactly as Sporfie returned them.
+- Before `create_event`, run `search_events` for the company (`future`, `current`, `past`) and reuse a matching event. `external_id` is your own stable ID for it.
+- Take company and place keys from `list_places`, and sports from `list_sports`. Do not guess them.
+- Never ask for, print or store an API token. Cursor signs the user in, or sends the token header itself.
+- A failed call is a tool error: show its status and message. Quote a "Reference" id when there is one, and retry after a few seconds if the server is busy. For how-to questions, use `search_help_center` first.

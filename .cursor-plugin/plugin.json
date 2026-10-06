@@ -1,0 +1,32 @@
+{
+  "name": "sporfie",
+  "displayName": "Sporfie",
+  "description": "Manage Sporfie events, highlight clips, venues and live streams from your agent, and answer support questions from the Sporfie Help Center.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Sporfie"
+  },
+  "publisher": "Sporfie",
+  "homepage": "https://www.sporfie.com",
+  "repository": "https://github.com/sporfie/sporfie-public-mcp",
+  "license": "Apache-2.0",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "sporfie",
+    "sports",
+    "live-streaming",
+    "video",
+    "highlights",
+    "events",
+    "mcp"
+  ],
+  "category": "integrations",
+  "tags": [
+    "sporfie",
+    "sports",
+    "video",
+    "mcp"
+  ],
+  "rules": "./rules/",
+  "mcpServers": "./mcp.json"
+}

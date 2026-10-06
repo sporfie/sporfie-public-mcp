@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sporfie_public_server"]
+
+[project]
+name = "sporfie-public-server"
+version = "0.2.0"
+description = "Public-facing MCP server for the Sporfie API (mcp.sporfie.com)"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+    # Pinned <2: mcp 2.x renamed FastMCP → MCPServer with breaking API changes.
+    # Migrate deliberately in its own change, not as a side effect of a resolve.
+    "mcp>=1.29.0,<2",
+    "httpx>=0.27.0",
+    "uvicorn>=0.30.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+# The end-to-end suite needs a deployed server, so it runs only when asked: pytest e2e
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".claude"]

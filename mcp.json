@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sporfie": {
+      "type": "http",
+      "url": "https://mcp.sporfie.com/mcp"
+    }
+  }
+}
